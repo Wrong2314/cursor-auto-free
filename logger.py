@@ -1,6 +1,8 @@
 import logging
 import os
 from datetime import datetime
+# 添加这行来禁用urllib3的debug日志
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 # Configure logging
 log_dir = "logs_token"
@@ -45,7 +47,7 @@ console_handler.setFormatter(PrefixFormatter("%(message)s"))
 logging.getLogger().addHandler(console_handler)
 
 # 打印日志目录所在路径
-logging.info(f"Logger initialized, log directory: {os.path.abspath(log_dir)}")
+# logging.info(f"Logger initialized, log directory: {os.path.abspath(log_dir)}")
 
 
 def main_task():
