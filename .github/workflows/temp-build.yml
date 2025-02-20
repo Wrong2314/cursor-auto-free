@@ -28,8 +28,8 @@ jobs:
     - name: Upload Windows artifact
       uses: actions/upload-artifact@v4
       with:
-        name: CursorPool-Windows
-        path: dist/CursorPool.exe
+        name: TokenPool-Windows
+        path: dist/TokenPool.exe
 
   build-macos-arm64:
     runs-on: macos-latest
@@ -55,8 +55,8 @@ jobs:
     - name: Upload MacOS ARM artifact
       uses: actions/upload-artifact@v4
       with:
-        name: CursorPool-MacOS-ARM64
-        path: dist/CursorPool
+        name: TokenPool-MacOS-ARM64
+        path: dist/TokenPool
 
   build-linux:
     runs-on: ubuntu-22.04
@@ -82,8 +82,8 @@ jobs:
     - name: Upload Linux artifact
       uses: actions/upload-artifact@v4
       with:
-        name: CursorPool-Linux
-        path: dist/CursorPool
+        name: TokenPool-Linux
+        path: dist/TokenPool
 
   build-macos-intel:
     runs-on: macos-latest
@@ -111,5 +111,5 @@ jobs:
     - name: Upload MacOS Intel artifact
       uses: actions/upload-artifact@v4
       with:
-        name: CursorPool-MacOS-Intel
-        path: dist/CursorPool
+        name: TokenPool-MacOS-Intel
+        path: dist/TokenPool

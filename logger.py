@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # Configure logging
-log_dir = "logs"
+log_dir = "token_logs"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
