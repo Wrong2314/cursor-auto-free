@@ -87,7 +87,7 @@ def check_verification_success(tab) -> Optional[VerificationStatus]:
     return None
 
 
-def handle_turnstile(tab, max_retries: int = 2, retry_interval: tuple = (1, 2)) -> bool:
+def handle_turnstile(tab, max_retries: int = 3, retry_interval: tuple = (1, 2)) -> bool:
     """
     处理 Turnstile 验证
 
@@ -404,30 +404,30 @@ if __name__ == "__main__":
     greater_than_0_45 = check_cursor_version()
     browser_manager = None
     try:
-        logging.info("\n=== 初始化程序 ===")
-        ExitCursor()
+        # logging.info("\n=== 初始化程序 ===")
+        # ExitCursor()
 
         # 提示用户选择操作模式
-        print("\n请选择操作模式:")
-        print("1. 仅重置机器码")
-        print("2. 完整注册流程")
-
-        while True:
-            try:
-                choice = int(input("请输入选项 (1 或 2): ").strip())
-                if choice in [1, 2]:
-                    break
-                else:
-                    print("无效的选项,请重新输入")
-            except ValueError:
-                print("请输入有效的数字")
-
-        if choice == 1:
-            # 仅执行重置机器码
-            reset_machine_id(greater_than_0_45)
-            logging.info("机器码重置完成")
-            print_end_message()
-            sys.exit(0)
+        # print("\n请选择操作模式:")
+        # print("1. 仅重置机器码")
+        # print("2. 完整注册流程")
+        #
+        # while True:
+        #     try:
+        #         choice = int(input("请输入选项 (1 或 2): ").strip())
+        #         if choice in [1, 2]:
+        #             break
+        #         else:
+        #             print("无效的选项,请重新输入")
+        #     except ValueError:
+        #         print("请输入有效的数字")
+        #
+        # if choice == 1:
+        #     # 仅执行重置机器码
+        #     reset_machine_id(greater_than_0_45)
+        #     logging.info("机器码重置完成")
+        #     print_end_message()
+        #     sys.exit(0)
 
         logging.info("正在初始化浏览器...")
 
@@ -479,17 +479,18 @@ if __name__ == "__main__":
             logging.info("正在获取会话令牌...")
             token = get_cursor_session_token(tab)
             if token:
-                logging.info("更新认证信息...")
-                update_cursor_auth(
-                    email=account, access_token=token, refresh_token=token
-                )
-                logging.info(
-                    "请前往开源项目查看更多信息：https://github.com/chengazhen/cursor-auto-free"
-                )
-                logging.info("重置机器码...")
-                reset_machine_id(greater_than_0_45)
-                logging.info("所有操作已完成")
-                print_end_message()
+                logging.info(f'\nToken: \n{token}')
+                # logging.info("更新认证信息...")
+                # update_cursor_auth(
+                #     email=account, access_token=token, refresh_token=token
+                # )
+                # logging.info(
+                #     "请前往开源项目查看更多信息：https://github.com/chengazhen/cursor-auto-free"
+                # )
+                # logging.info("重置机器码...")
+                # reset_machine_id(greater_than_0_45)
+                # logging.info("所有操作已完成")
+                # print_end_message()
             else:
                 logging.error("获取会话令牌失败，注册流程未完成")
 
