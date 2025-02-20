@@ -139,8 +139,8 @@ class Config:
 # 使用示例
 if __name__ == "__main__":
     try:
-        config = Config()
+        # config = Config()
         print("环境变量加载成功！")
-        config.print_config()
+        # config.print_config()
     except ValueError as e:
         print(f"错误: {e}")

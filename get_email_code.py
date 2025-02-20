@@ -156,7 +156,7 @@ class EmailVerificationHandler:
         # 从邮件文本中提取6位数字验证码
         mail_text = mail_detail_data.get("text", "")
         mail_subject = mail_detail_data.get("subject", "")
-        logging.info(f"找到邮件主题: {mail_subject}")
+        print(f"找到邮件主题: {mail_subject}")
         # 修改正则表达式，确保 6 位数字不紧跟在字母或域名相关符号后面
         code_match = re.search(r"(?<![a-zA-Z@.])\b\d{6}\b", mail_text)
 
