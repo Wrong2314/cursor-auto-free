@@ -28,6 +28,7 @@ class Config:
         self.temp_mail_epin = os.getenv("TEMP_MAIL_EPIN", "").strip()
         self.temp_mail_ext = os.getenv("TEMP_MAIL_EXT", "").strip()
         self.domain = os.getenv("DOMAIN", "").strip()
+        self.contributor = os.getenv("CONTRIBUTOR", "").strip()
 
         # 如果临时邮箱为null则加载IMAP
         if self.temp_mail == "null":

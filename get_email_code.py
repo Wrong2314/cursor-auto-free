@@ -29,7 +29,7 @@ class EmailVerificationHandler:
 
         for attempt in range(max_retries):
             try:
-                logging.info(f"尝试获取验证码 (第 {attempt + 1}/{max_retries} 次)...")
+                print(f"尝试获取验证码 (第 {attempt + 1}/{max_retries} 次)...")
 
                 if not self.imap:
                     verify_code, first_id = self._get_latest_mail_code()
