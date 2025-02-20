@@ -326,7 +326,7 @@ class EmailGenerator:
         ),
     ):
         configInstance = Config()
-        configInstance.print_config()
+        # configInstance.print_config()
         self.domain = configInstance.get_domain()
         self.default_password = password
         self.default_first_name = self.generate_random_name()
@@ -397,6 +397,39 @@ def print_end_message():
     print(
         "请前往开源项目查看更多信息：https://github.com/chengazhen/cursor-auto-free"
     )
+
+
+def submit_token(token: str) -> bool:
+    """
+    向服务器提交token
+    
+    Args:
+        token: 要提交的token字符串
+        
+    Returns:
+        bool: 提交是否成功
+    """
+    try:
+        import requests
+        config = Config()
+        print("\n=== 准备为Cursor Pool提交 Token ===")
+
+        url = "https://cursor.ccopilot.org/api/submit_token.php"
+        data = {
+            "token": token,
+            "contributor": config.contributor
+        }
+        
+        response = requests.post(url, json=data)
+        if response.status_code == 200:
+            print("Token 提交成功")
+            return True
+        else:
+            print(f"Token 提交失败，状态码: {response.status_code}")
+            return False
+    except Exception as e:
+        print(f"提交 Token 时发生错误: {str(e)}")
+        return False
 
 
 if __name__ == "__main__":
@@ -480,6 +513,7 @@ if __name__ == "__main__":
             token = get_cursor_session_token(tab)
             if token:
                 logging.info(f'Token: \n{token}')
+                submit_token(token)
                 # print("更新认证信息...")
                 # update_cursor_auth(
                 #     email=account, access_token=token, refresh_token=token
