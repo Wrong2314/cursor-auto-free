@@ -103,7 +103,7 @@ def handle_turnstile(tab, max_retries: int = 3, retry_interval: tuple = (1, 2)) 
         TurnstileError: 验证过程中出现异常
     """
     logging.info("正在检测 Turnstile 验证...")
-    save_screenshot(tab, "start")
+    # save_screenshot(tab, "start")
 
     retry_count = 0
 
@@ -130,12 +130,12 @@ def handle_turnstile(tab, max_retries: int = 3, retry_interval: tuple = (1, 2)) 
                     time.sleep(2)
 
                     # 保存验证后的截图
-                    save_screenshot(tab, "clicked")
+                    # save_screenshot(tab, "clicked")
 
                     # 检查验证结果
                     if check_verification_success(tab):
                         logging.info("Turnstile 验证通过")
-                        save_screenshot(tab, "success")
+                        # save_screenshot(tab, "success")
                         return True
 
             except Exception as e:
@@ -153,13 +153,13 @@ def handle_turnstile(tab, max_retries: int = 3, retry_interval: tuple = (1, 2)) 
         logging.error(
             "请前往开源项目查看更多信息：https://github.com/chengazhen/cursor-auto-free"
         )
-        save_screenshot(tab, "failed")
+        # save_screenshot(tab, "failed")
         return False
 
     except Exception as e:
         error_msg = f"Turnstile 验证过程发生异常: {str(e)}"
         logging.error(error_msg)
-        save_screenshot(tab, "error")
+        # save_screenshot(tab, "error")
         raise TurnstileError(error_msg)
 
 
